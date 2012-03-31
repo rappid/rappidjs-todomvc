@@ -34,7 +34,7 @@
                         input.$el.blur();
 
                         todo.set("content", content);
-                        this.set("editing",true);
+                        this.set("editing",false);
                     } else if (e.$.type === "blur") {
                         todo = this.get("todo");
                         this.set("editing",false);
