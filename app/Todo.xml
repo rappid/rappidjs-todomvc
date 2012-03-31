@@ -73,7 +73,7 @@
             {i18n.translate(with)}
             <a href="http://rappidjs.com">&lt;rAppid:js /&gt;</a>.
             <br/>
-            {i18n.translate(creditsTo)} <a href="http://www.it-tony.com">Tony Findeisen</a>.
+            {i18n.translate(creditsTo)} <a href="http://github.com/it-ony">Tony Findeisen</a>.
         </div>
     </div>
 </app:TodoClass>
