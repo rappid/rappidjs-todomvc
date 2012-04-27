@@ -68,17 +68,6 @@ define(["js/core/Application", "js/core/I18n", "app/model/Todo", "app/collection
             removeTodo: function (e, el) {
                 this.get("todoList").remove(e.$);
             },
-            sort: function () {
-                this.get("todoList").sort(function (t1, t2) {
-                    if (t1.get("isDone") && t2.get("isDone")) {
-                        return 0;
-                    } else if (t1.get("isDone") === true && !t2.get("isDone")) {
-                        return 1;
-                    } else {
-                        return -1;
-                    }
-                });
-            },
             /**
              * Start the application and render it to the body ...
              */
