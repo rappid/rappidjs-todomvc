@@ -9,13 +9,11 @@
 <body>
 <script type="text/javascript" src="package/main-built.js"></script>
 <script type="text/javascript">
-    var t = new Date().getTime();
     rAppid.bootStrap("app/Todo.xml", "config.json",
             function (err, systemManager, application) {
                 if (!err) {
                     application.start(null, function () {
                         application.render(document.body);
-                        console.log((new Date().getTime())-t);
                     });
                 } else {
                     console.warn(err);

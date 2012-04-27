@@ -6,25 +6,25 @@
             var ENTER_KEY = 13;
 
             return {
-                defaults:{
-                    componentClass:"todo",
-                    editing:false
+                defaults: {
+                    componentClass: "todo",
+                    editing: false
                 },
-                events:[
+                events: [
                     "remove"
                 ],
-                editTodo:function (e, div) {
+                editTodo: function (e, div) {
                     var todo = div.find("$item");
                     this.set("editing", true);
                     e.$.stopPropagation();
                     // we don't use jquery, so we have to select this the old fashioned way
                     div.$el.parentNode.parentNode.getElementsByTagName("input")[1].select();
                 },
-                checkTodo:function (e, input) {
+                checkTodo: function (e, input) {
                     var todo = this.get("todo");
                     todo.setCompleted(!todo.isCompleted());
                 },
-                updateTodo:function (e, input) {
+                updateTodo: function (e, input) {
                     var todo;
                     if (e.$.keyCode === ENTER_KEY) {
                         todo = this.get("todo");
@@ -38,10 +38,10 @@
                         this.set("editing", false);
                     }
                 },
-                triggerOnRemove:function (e, el) {
+                triggerOnRemove: function (e, el) {
                     this.trigger("onremove", this.get("todo"));
                 },
-                _renderEditing:function (editing) {
+                _renderEditing: function (editing) {
                     if (editing) {
                         this.addClass("editing");
                     } else {
