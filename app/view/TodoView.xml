@@ -2,7 +2,9 @@
          xmlns:js="js.core" xmlns:ui="js.ui">
     <js:Script>
         <![CDATA[
-        (function (Base, Bindable, Content) {
+        (function () {
+            var ENTER_KEY = 13;
+
             return {
                 defaults:{
                     componentClass:"todo",
@@ -20,25 +22,17 @@
                 },
                 checkTodo:function (e, input) {
                     var todo = this.get("todo");
-                    todo.setDone(!todo.get("isDone"));
+                    todo.setCompleted(!todo.isCompleted());
                 },
                 updateTodo:function (e, input) {
                     var todo;
-                    if (e.$.keyCode === 13) {
+                    if (e.$.keyCode === ENTER_KEY) {
                         todo = this.get("todo");
-                        if (!todo.hasContent()) {
+                        if (!todo.hasTitle()) {
                             this.trigger("onremove", todo);
-                        }else{
+                        } else {
                             this.set("editing", false);
                         }
-                    } else if (e.$.keyCode === 27) {
-                        todo = this.get("todo");
-                        var content = todo.get("content");
-
-                        input.$el.blur();
-
-                        todo.set("content", content);
-                        this.set("editing", false);
                     } else if (e.$.type === "blur") {
                         todo = this.get("todo");
                         this.set("editing", false);
@@ -63,11 +57,11 @@
         <div class="{todo.status()}">
             <div class="view">
                 <input class="toggle" type="checkbox" onchange="checkTodo"
-                       checked="{todo.isDone}"/>
-                <label ondblclick="editTodo">{todo.content}</label>
+                       checked="{todo.completed}"/>
+                <label ondblclick="editTodo">{todo.title}</label>
                 <button class="destroy" onclick="triggerOnRemove"/>
             </div>
-            <input class="edit" type="text" value="{{todo.content}}"
+            <input class="edit" type="text" value="{{todo.title}}"
                    onkeyup="updateTodo" onblur="updateTodo"/>
         </div>
     </js:Template>
