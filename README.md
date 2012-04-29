@@ -58,21 +58,25 @@ So there is a clean seperation between application code and ui declaration.
 In the initialize method inside TodoClass all binded models are created and set as attributes of the application. This is important for resolving the bindings used in the view declaration.
 
 
-### Todo Model (app/model/Todo.js)
- The default hash defines the default attributes for an instance of TodoModel.
+### The Todo Model (app/model/Todo.js)
+ In this model, the default attributes for an instance and some methods used inside the application are defined.
  
- In this model we use a virtual attribute `hasTitle` which checks, if the title has content. 
- To use this method inside a binding, we tell the method by `onChange('title')` that the binding value has to be refreshed everytime the title changes.  
+ It also declares the functions `hasTitle` and `status` as bindable. 
+ By calling the `onChange(...)` function we tell the application that the binding value of this methods has to be refreshed everytime the title changes.  
+ See app/view/TodoView.xml for usage.
+ 
 
- The same principle we use for the status.
+### The Todo List (app/collection/TodoList.js)
 
-### Todo List (app/collection/TodoList.js)
+The Todo List is a bindable List which encapsulates some application logic for manipulating the todo instances.
+It also declares bindable functions, which are used inside the view ...
 
-The Todo
-
-### Todo View
+### The Todo View (app/view/TodoView.xml)
  The Todo view is a custom view for displaying and editing Todo instances.
  Here we define view logic and view declaration in one file.
+ 
+ 
+ 
  
  
  
