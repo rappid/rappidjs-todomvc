@@ -59,9 +59,10 @@ In the initialize method inside TodoClass all binded models are created and set 
 
 
 ### The Todo Model (app/model/Todo.js)
- In this model, the default attributes for an instance and some methods used inside the application are defined.
+
+In this model, the default attributes for an instance and some methods used inside the application are defined.
  
- It also marks the functions `hasTitle` and `status` as bindable.
+It also marks the functions `hasTitle` and `status` as bindable.
  
  ```javascript
  status: function () {
@@ -69,8 +70,7 @@ In the initialize method inside TodoClass all binded models are created and set 
  }.onChange("completed"),
  ```
  
- By calling the `onChange(...)` function it tells the application that the binding value of this methods has to be refreshed everytime the title changes.  
- See app/view/TodoView.xml for usage.
+By calling the `onChange(...)` function it tells the application that the binding value of this methods has to be refreshed everytime the title changes. See app/view/TodoView.xml for usage.
  
 
 ### The Todo List (app/collection/TodoList.js)
