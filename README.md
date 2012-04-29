@@ -61,8 +61,15 @@ In the initialize method inside TodoClass all binded models are created and set 
 ### The Todo Model (app/model/Todo.js)
  In this model, the default attributes for an instance and some methods used inside the application are defined.
  
- It also declares the functions `hasTitle` and `status` as bindable. 
- By calling the `onChange(...)` function we tell the application that the binding value of this methods has to be refreshed everytime the title changes.  
+ It also marks the functions `hasTitle` and `status` as bindable.
+ 
+ ```javascript
+ status: function () {
+   return this.$.completed ? "done" : '';
+ }.onChange("completed"),
+ ```
+ 
+ By calling the `onChange(...)` function it tells the application that the binding value of this methods has to be refreshed everytime the title changes.  
  See app/view/TodoView.xml for usage.
  
 
