@@ -70,7 +70,8 @@ It also marks the functions `hasTitle` and `status` as bindable.
  }.onChange("completed"),
  ```
  
-By calling the `onChange(...)` function it tells the application that the binding value of this methods has to be refreshed everytime the title changes. See app/view/TodoView.xml for usage.
+By calling the `onChange(...)` function it tells the application that the binding value of this methods has to be refreshed everytime the attributes change. 
+See app/view/TodoView.xml for usage.
  
 
 ### The Todo List (app/collection/TodoList.js)
