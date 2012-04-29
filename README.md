@@ -21,9 +21,9 @@ The main view of the application is declarated in Todo.xml. The first tag of the
 <?xml version="1.0"?>
 <app:TodoClass xmlns="http://www.w3.org/1999/xhtml"
                xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:view="app.view" xmlns:conf="js.conf">
-                 ...
-               </app:TodoClass>
-              ```
+   ...
+</app:TodoClass>
+```
 As you can see, the default namespace is `"http://www.w3.org/1999/xhtml"` which allows you to use plain HTML elements to describe your view.
 The other namespaces are used for custom components as I will describe later.
 
