@@ -52,13 +52,27 @@ The bindings tell the application to hold view and model in sync. If you're inte
 
 
 ### The code behind file TodoClass.js
-The TodoClass.js does two things. It initializes the attributes used in this application and it defines the event handlers for routing and ui events.
+The TodoClass.js is the code behind file for Todo.xml. It initializes the attributes used in this application and it defines the event handlers for routing and ui events.
+So there is a clean seperation between application code and ui declaration.
 
-In the initialize method all binded models are created and set as attributes of the application. This is important for resolving the bindings used in the view declaration.
-
-### The Todo Model
-
+In the initialize method inside TodoClass all binded models are created and set as attributes of the application. This is important for resolving the bindings used in the view declaration.
 
 
-### The Todo View
+### Todo Model (app/model/Todo.js)
+ The default hash defines the default attributes for an instance of TodoModel.
+ 
+ In this model we use a virtual attribute `hasTitle` which checks, if the title has content. 
+ To use this method inside a binding, we tell the method by `onChange('title')` that the binding value has to be refreshed everytime the title changes.  
 
+ The same principle we use for the status.
+
+### Todo List (app/collection/TodoList.js)
+
+The Todo
+
+### Todo View
+ The Todo view is a custom view for displaying and editing Todo instances.
+ Here we define view logic and view declaration in one file.
+ 
+ 
+ 
