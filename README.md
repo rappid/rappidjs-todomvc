@@ -23,7 +23,7 @@ The main view of the application is declarated in Todo.xml. The first tag of the
    ...
 </app:TodoClass>
 ```
-As you can see, the default namespace is `"http://www.w3.org/1999/xhtml"` which allows you to use plain HTML elements to describe your view.
+As you can see, the default namespace is `"http://www.w3.org/1999/xhtml"` which allows us to use plain HTML elements to describe our view.
 The other namespaces are used for custom components.
 
 One example of a custom component is the Router configuration.
@@ -36,11 +36,25 @@ One example of a custom component is the Router configuration.
 </js:Router>
 ```
 Inside this declaration all routes of the application are defined. The **route** attribute expects a regular expression, which matches the route. 
-The **onexec** attribute defines, the function which will be called, if the route is triggered.
+The **onexec** attribute defines the function which will be called, if the route is triggered.
+
+The rest of the markup defines the UI of our application. 
+To connect the view with our application model we use bindings. For example the header:
+
+```html
+<header id="header">
+            <h1>{i18n.translate('title')}</h1>
+            <input id="new-todo" placeholder="{i18n.translate('placeholder')}" type="text" onkeyup="addNewTodo"
+                   value="{{newTodo.title}}" autofocus="autofocus"/>
+        </header>
+```
+The bindings tell the application to hold view and model in sync. If you're interested in more details, checkout the rAppid.js wiki.
+
 
 ### The code behind file TodoClass.js
-The TodoClass.js does two things. It initializes the attributes, used in this application, and it defines the event handlers for routing and ui events.
+The TodoClass.js does two things. It initializes the attributes used in this application and it defines the event handlers for routing and ui events.
 
+In the initialize method all binded models are created and set as attributes of the application. This is important for resolving the bindings used in the view declaration.
 
 ### The Todo Model
 
