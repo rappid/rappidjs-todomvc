@@ -25,9 +25,9 @@
                    checked="{todoList.areAllComplete()}"/>
             <label for="toggle-all">{i18n.translate('markAllAsComplete')}</label>
             <!-- CUSTOM UI COMPONENT FOR RENDERING A LIST OF ITEMS -> TODOs -->
-            <ui:ItemsView items="{filterList}" tagName="ul" id="todo-list">
+            <ui:ItemsView items="{filterList}" tagName="ul" id="todo-list" itemKey="todo">
                 <js:Template name="item">
-                    <view:TodoView todo="{$item}" tagName="li" onremove="removeTodo"/>
+                    <view:TodoView todo="{$todo}" tagName="li" onremove="removeTodo"/>
                 </js:Template>
             </ui:ItemsView>
         </section>

@@ -28,7 +28,6 @@ define(["js/core/Application", "js/core/I18n", "app/model/Todo", "app/collection
                         }
                     }}));
                 this.set("newTodo", new Todo());
-                this.set("locales", ["en_EN", "de_DE"]);
             },
             /**
              * Are triggered
@@ -62,10 +61,10 @@ define(["js/core/Application", "js/core/I18n", "app/model/Todo", "app/collection
             markAllComplete: function (e, input) {
                 this.get("todoList").markAll(input.get("checked"));
             },
-            clearCompleted: function (e) {
+            clearCompleted: function () {
                 this.get("todoList").clearCompleted();
             },
-            removeTodo: function (e, el) {
+            removeTodo: function (e) {
                 this.get("todoList").remove(e.$);
             },
             /**

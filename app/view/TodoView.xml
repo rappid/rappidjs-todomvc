@@ -10,6 +10,7 @@
                     componentClass: "todo",
                     editing: false
                 },
+                $classAttributes: ['todo'],
                 events: [
                     "remove"
                 ],
