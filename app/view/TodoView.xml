@@ -40,7 +40,7 @@
                     }
                 },
                 triggerOnRemove: function (e, el) {
-                    this.trigger("onremove", this.get("todo"));
+                    this.trigger("remove", this.get("todo"));
                 },
                 _renderEditing: function (editing) {
                     if (editing) {
