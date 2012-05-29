@@ -17,7 +17,6 @@ define(["js/core/List"], function (List) {
             return true;
         }.on('change', 'add', 'remove'),
         clearCompleted: function () {
-            console.log("clear completed");
             for (var i = this.$items.length - 1; i >= 0; i--) {
                 if (this.$items[i].isCompleted()) {
                     this.removeAt(i);
