@@ -4,6 +4,7 @@
         <![CDATA[
         (function () {
             var ENTER_KEY = 13;
+            var INPUT_BLUR = "blur";
 
             return {
                 defaults: {
@@ -11,9 +12,7 @@
                     editing: false
                 },
                 $classAttributes: ['todo'],
-                events: [
-                    "remove"
-                ],
+                events: ["remove"],
                 editTodo: function (e, div) {
                     var todo = div.find("$item");
                     this.set("editing", true);
@@ -30,11 +29,11 @@
                     if (e.$.keyCode === ENTER_KEY) {
                         todo = this.get("todo");
                         if (!todo.hasTitle()) {
-                            this.trigger("onremove", todo);
+                            this.trigger("remove", todo);
                         } else {
                             this.set("editing", false);
                         }
-                    } else if (e.$.type === "blur") {
+                    } else if (e.$.type === INPUT_BLUR) {
                         todo = this.get("todo");
                         this.set("editing", false);
                     }
@@ -48,6 +47,12 @@
                     } else {
                         this.removeClass("editing");
                     }
+                },
+                trim: function(title){
+                    if(title){
+                        return title.trim();
+                    }
+                    return "";
                 }
 
             }
@@ -62,7 +67,7 @@
                 <label ondblclick="editTodo">{todo.title}</label>
                 <button class="destroy" onclick="triggerOnRemove"/>
             </div>
-            <input class="edit" type="text" value="{{todo.title}}"
+            <input class="edit" type="text" value="{{todo.title|trim()}}"
                    onkeyup="updateTodo" onblur="updateTodo"/>
         </div>
     </js:Template>
