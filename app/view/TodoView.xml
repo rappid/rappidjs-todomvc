@@ -11,34 +11,32 @@
                     componentClass: "todo",
                     editing: false
                 },
-                $classAttributes: ['todo'],
+                $classAttributes: ['todo', 'inputElement'],
                 events: ["remove"],
-                editTodo: function (e, div) {
-                    var todo = div.find("$item");
+                editTodo: function (e) {
                     this.set("editing", true);
                     e.$.stopPropagation();
                     // we don't use jquery, so we have to select this the old fashioned way
-                    div.$el.parentNode.parentNode.getElementsByTagName("input")[1].select();
+                    this.$.inputElement.$el.select();
                 },
-                checkTodo: function (e, input) {
+                checkTodo: function () {
                     var todo = this.get("todo");
                     todo.setCompleted(!todo.isCompleted());
                 },
-                updateTodo: function (e, input) {
+                updateTodo: function (e) {
                     var todo;
-                    if (e.$.keyCode === ENTER_KEY) {
+                    if (e.$.keyCode === ENTER_KEY || e.$.type === INPUT_BLUR) {
                         todo = this.get("todo");
                         if (!todo.hasTitle()) {
+                            // TODO: todo.delete();
                             this.trigger("remove", todo);
                         } else {
+                            // TODO: todo.save();
                             this.set("editing", false);
                         }
-                    } else if (e.$.type === INPUT_BLUR) {
-                        todo = this.get("todo");
-                        this.set("editing", false);
                     }
                 },
-                triggerOnRemove: function (e, el) {
+                triggerOnRemove: function () {
                     this.trigger("remove", this.get("todo"));
                 },
                 _renderEditing: function (editing) {
@@ -46,6 +44,7 @@
                         this.addClass("editing");
                     } else {
                         this.removeClass("editing");
+                        this.$.inputElement.$el.blur();
                     }
                 },
                 trim: function(title){
@@ -67,7 +66,7 @@
                 <label ondblclick="editTodo">{todo.title}</label>
                 <button class="destroy" onclick="triggerOnRemove"/>
             </div>
-            <input class="edit" type="text" value="{{todo.title|trim()}}"
+            <input class="edit" cid="inputElement" type="text" value="{{todo.title|trim()}}"
                    onkeyup="updateTodo" onblur="updateTodo"/>
         </div>
     </js:Template>
