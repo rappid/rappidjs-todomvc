@@ -18,14 +18,14 @@
         <header id="header">
             <h1>{i18n.translate('title')}</h1>
             <input id="new-todo" placeholder="{i18n.translate('placeholder')}" type="text" onkeyup="addNewTodo"
-                   value="{{newTodo.title}}" autofocus="autofocus"/>
+                   value="{{newTodo.title|trim()}}" autofocus="autofocus"/>
         </header>
         <section id="main" visible="{todoList.hasItems()}">
             <input id="toggle-all" type="checkbox" onclick="markAllComplete"
                    checked="{todoList.areAllComplete()}"/>
             <label for="toggle-all">{i18n.translate('markAllAsComplete')}</label>
             <!-- CUSTOM UI COMPONENT FOR RENDERING A LIST OF ITEMS -> TODOs -->
-            <ui:ItemsView items="{filterList}" tagName="ul" id="todo-list" itemKey="todo">
+            <ui:ItemsView items="{filterList.list}" tagName="ul" id="todo-list" itemKey="todo">
                 <js:Template name="item">
                     <view:TodoView todo="{$todo}" tagName="li" onremove="removeTodo"/>
                 </js:Template>

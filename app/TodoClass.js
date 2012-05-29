@@ -1,5 +1,5 @@
-define(["js/core/Application", "js/core/I18n", "app/model/Todo", "app/collection/TodoList", "js/data/ListView"],
-    function (Application, I18n, Todo, TodoList, ListView) {
+define(["js/core/Application", "js/core/I18n", "app/model/Todo", "app/collection/TodoList", "js/data/FilterDataView"],
+    function (Application, I18n, Todo, TodoList, FilterDataView) {
 
         var ENTER_KEY = 13;
 
@@ -12,10 +12,9 @@ define(["js/core/Application", "js/core/I18n", "app/model/Todo", "app/collection
              * In this method we set the initial models
              */
             initialize: function () {
-
                 this.set("todoList", new TodoList());
-                this.set("filterList", new ListView({
-                    list: this.get("todoList"),
+                this.set("filterList", new FilterDataView({
+                    baseList: this.get("todoList"),
                     filter: 'all',
                     filterFnc: function (item) {
                         var filter = this.$.filter;
@@ -40,9 +39,6 @@ define(["js/core/Application", "js/core/I18n", "app/model/Todo", "app/collection
             },
             showCompleted: function () {
                 this.$.filterList.set("filter", "completed");
-            },
-            isStringEqual: function (route, filter) {
-                return route == filter;
             },
             /**
              * The rest is just controller stuff
@@ -76,6 +72,15 @@ define(["js/core/Application", "js/core/I18n", "app/model/Todo", "app/collection
 
                 this.$.i18n.set("locale", "en_EN", {silent: true});
                 this.$.i18n.loadLocale("en_EN", callback);
+            },
+            // HELPER METHODS
+            // transform method for trimming input value before setting it as title
+            trim: function(value){
+                return value.trim();
+            },
+            // compares 2 strings
+            isStringEqual: function (str1, str2) {
+                return str1 == str2;
             }
         });
     });
