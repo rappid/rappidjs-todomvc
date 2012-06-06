@@ -15,8 +15,8 @@
                 events: ["remove"],
                 editTodo: function (e) {
                     this.set("editing", true);
-                    e.$.stopPropagation();
-                    // we don't use jquery, so we have to select this the old fashioned way
+                    e.$.preventDefault();
+
                     this.$.inputElement.$el.select();
                 },
                 checkTodo: function () {
@@ -33,6 +33,7 @@
                         } else {
                             // TODO: todo.save();
                             this.set("editing", false);
+                            todo.save();
                         }
                     }
                 },

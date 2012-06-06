@@ -1,19 +1,24 @@
 <?xml version="1.0"?>
 <app:TodoClass xmlns="http://www.w3.org/1999/xhtml"
-               xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:view="app.view" xmlns:conf="js.conf">
-    <!-- INJECTION OF i18n COMPONENTN FOR TRANSLATIONS -->
-    <js:Injection>
-        <js:I18n locale="en_EN"/>
-    </js:Injection>
-    <!-- DEFINTION OF ROUTERS -->
+               xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:view="app.view" xmlns:conf="js.conf"
+               xmlns:data="js.data">
+    <!-- i18n -->
+    <js:I18n cid="i18n" locale="en_EN"/>
+
+    <!-- Locale Storage Configuration-->
+    <data:LocalStorageDataSource cid="dataSource" name="todo-rappidjs">
+        <conf:Configuration path="todos" modelClassName="app.model.Todo"
+                            collectionClassName="app.collection.TodoList"/>
+    </data:LocalStorageDataSource>
+
+    <!-- LE ROUTE DEFINITIONS -->
     <js:Router cid="router">
         <conf:Route name="default" route="^$" onexec="showAll"/>
         <conf:Route name="active" route="^active$" onexec="showActive"/>
         <conf:Route name="completed" route="^completed$" onexec="showCompleted"/>
-
     </js:Router>
-    <!-- HERE WE START TO DEFINE THE UI WITH HTML AND CUSTOM UI COMPONENTS -->
 
+    <!-- HERE WE START TO DEFINE THE UI WITH HTML AND CUSTOM UI COMPONENTS -->
     <section id="todoapp">
         <header id="header">
             <h1>{i18n.translate('title')}</h1>

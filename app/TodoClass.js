@@ -1,32 +1,18 @@
-define(["js/core/Application", "js/core/I18n", "app/model/Todo", "app/collection/TodoList", "js/data/FilterDataView"],
-    function (Application, I18n, Todo, TodoList, FilterDataView) {
+define(["js/core/Application", "js/core/I18n", "app/model/Todo", "app/collection/TodoList", "js/data/FilterDataView", "js/data/LocalStorageDataSource"],
+    function (Application, I18n, Todo, TodoList, FilterDataView, DataSource) {
 
         var ENTER_KEY = 13;
 
         return Application.inherit("app.TodoClass", {
-            inject: {
-                i18n: I18n
-            },
             /**
              * Initializes the app
              * In this method we set the initial models
              */
             initialize: function () {
-                this.set("todoList", new TodoList());
-                this.set("filterList", new FilterDataView({
-                    baseList: this.get("todoList"),
-                    filter: 'all',
-                    filterFnc: function (item) {
-                        var filter = this.$.filter;
-                        if (filter == "active") {
-                            return !item.isCompleted();
-                        } else if (filter == "completed") {
-                            return item.isCompleted();
-                        } else {
-                            return true;
-                        }
-                    }}));
+                this.set("todoList", null);
+                this.set("filterList", null);
                 this.set("newTodo", new Todo());
+                this.callBase();
             },
             /**
              * Are triggered
@@ -47,9 +33,13 @@ define(["js/core/Application", "js/core/I18n", "app/model/Todo", "app/collection
                 if (e.$.keyCode === ENTER_KEY) {
                     var tmp = this.get("newTodo");
                     if (tmp.hasTitle()) {
-                        var newTodo = new Todo({title: tmp.get("title")});
-                        newTodo.setCompleted(false);
+                        var newTodo = this.$.dataSource.createEntity(Todo);
+                        newTodo.set({title: tmp.get("title"), completed: false});
                         this.get("todoList").add(newTodo);
+
+                        // save the new item
+                        newTodo.save();
+
                         tmp.set("title", "");
                     }
                 }
@@ -69,6 +59,25 @@ define(["js/core/Application", "js/core/I18n", "app/model/Todo", "app/collection
             start: function (parameter, callback) {
                 // false - disables autostart
                 this.callBase(parameter, false);
+
+                this.set('todoList',this.$.dataSource.createCollection(TodoList));
+
+                // fetch all todos, can be done sync because we use localStorage
+                this.$.todoList.fetch();
+
+                this.set('filterList', new FilterDataView({
+                    baseList: this.get("todoList"),
+                    filter: 'all',
+                    filterFnc: function (item) {
+                        var filter = this.$.filter;
+                        if (filter == "active") {
+                            return !item.isCompleted();
+                        } else if (filter == "completed") {
+                            return item.isCompleted();
+                        } else {
+                            return true;
+                        }
+                }}));
 
                 this.$.i18n.set("locale", "en_EN", {silent: true});
                 this.$.i18n.loadLocale("en_EN", callback);

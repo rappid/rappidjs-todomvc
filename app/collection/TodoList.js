@@ -1,5 +1,7 @@
-define(["js/core/List"], function (List) {
-    return List.inherit("app.collection.TodoList", {
+define(["js/data/Collection", "app/model/Todo"], function (Collection, Todo) {
+    return Collection.inherit("app.collection.TodoList", {
+        $modelFactory: Todo,
+
         markAll: function (done) {
             this.each(function (todo) {
                 todo.setCompleted(done);
