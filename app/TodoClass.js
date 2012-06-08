@@ -45,22 +45,24 @@ define(["js/core/Application", "js/core/I18n", "app/model/Todo", "app/collection
                 }
             },
             markAllComplete: function (e, input) {
-                this.get("todoList").markAll(input.get("checked"));
+                this.get("todoList").markAll(input.$el.checked);
             },
             clearCompleted: function () {
                 this.get("todoList").clearCompleted();
             },
             removeTodo: function (e) {
-                this.get("todoList").remove(e.$);
+                var todo = e.$, self = this;
+                todo.remove(null, function(err){
+                    if(!err){
+                        self.get("todoList").remove(todo);
+                    }
+                });
             },
             /**
              * Start the application and render it to the body ...
              */
             start: function (parameter, callback) {
-                // false - disables autostart
-                this.callBase(parameter, false);
-
-                this.set('todoList',this.$.dataSource.createCollection(TodoList));
+                this.set('todoList', this.$.dataSource.createCollection(TodoList));
 
                 // fetch all todos, can be done sync because we use localStorage
                 this.$.todoList.fetch();
@@ -77,9 +79,12 @@ define(["js/core/Application", "js/core/I18n", "app/model/Todo", "app/collection
                         } else {
                             return true;
                         }
-                }}));
+                    }}));
 
-                this.$.i18n.set("locale", "en_EN", {silent: true});
+                // false - disables autostart
+                this.callBase(parameter, false);
+
+                // load locale and start by calling callback
                 this.$.i18n.loadLocale("en_EN", callback);
             },
             // HELPER METHODS

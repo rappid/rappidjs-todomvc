@@ -23,7 +23,7 @@
         <header id="header">
             <h1>{i18n.translate('title')}</h1>
             <input id="new-todo" placeholder="{i18n.translate('placeholder')}" type="text" onkeyup="addNewTodo"
-                   value="{{newTodo.title|trim()}}" autofocus="autofocus"/>
+                   value="{{newTodo.title|trim()}}" autofocus="autofocus" updateOnEvent="change"/>
         </header>
         <section id="main" visible="{todoList.hasItems()}">
             <input id="toggle-all" type="checkbox" onclick="markAllComplete"
