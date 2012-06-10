@@ -11,7 +11,6 @@ define(["js/core/Application", "js/core/I18n", "app/model/Todo", "app/collection
             initialize: function () {
                 this.set("todoList", null);
                 this.set("filterList", null);
-                this.set("newTodo", new Todo());
                 this.callBase();
             },
             /**
@@ -29,18 +28,18 @@ define(["js/core/Application", "js/core/I18n", "app/model/Todo", "app/collection
             /**
              * The rest is just controller stuff
              */
-            addNewTodo: function (e) {
+            addNewTodo: function (e, input) {
                 if (e.$.keyCode === ENTER_KEY) {
-                    var tmp = this.get("newTodo");
-                    if (tmp.hasTitle()) {
+                    var title = input.get("value").trim();
+                    if (title) {
                         var newTodo = this.$.dataSource.createEntity(Todo);
-                        newTodo.set({title: tmp.get("title"), completed: false});
+                        newTodo.set({title: title, completed: false});
                         this.get("todoList").add(newTodo);
 
                         // save the new item
                         newTodo.save();
 
-                        tmp.set("title", "");
+                        input.set('value','');
                     }
                 }
             },
@@ -86,11 +85,6 @@ define(["js/core/Application", "js/core/I18n", "app/model/Todo", "app/collection
 
                 // load locale and start by calling callback
                 this.$.i18n.loadLocale("en_EN", callback);
-            },
-            // HELPER METHODS
-            // transform method for trimming input value before setting it as title
-            trim: function(value){
-                return value.trim();
             },
             // compares 2 strings
             isStringEqual: function (str1, str2) {
