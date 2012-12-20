@@ -43,10 +43,14 @@ define(["js/core/Application", "js/core/I18n", "app/model/Todo", "app/collection
                 }
             },
             markAllComplete: function (e) {
-                this.get("todoList").markAll(e.target.$el.checked);
+                var done = e.target.$el.checked;
+                this.$.todoList.each(function(item){
+                    item.setCompleted(done);
+                    item.save();
+                });
             },
             clearCompleted: function () {
-                this.get("todoList").clearCompleted();
+                this.$.todoList.clearCompleted();
             },
             removeTodo: function (e) {
                 var todo = e.$, self = this;

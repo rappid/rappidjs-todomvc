@@ -1,16 +1,13 @@
-{
-    "xamlClasses": ["app/Todo", "app/view/TodoView", "js/ui/ButtonGroup", "js/ui/Link", "js/ui/List", "js/ui/MenuButton", "js/ui/Modal", "js/ui/ScrollView", "js/ui/SplitButton", "js/ui/TabView"],
-    "namespaceMap": null,
-    "rewriteMap": null,
-    "paths": {
-        "xaml": "js/plugins/xaml",
-        "json": "js/plugins/json",
-        "raw": "js/plugins/raw",
-        "flow": "js/lib/flow",
-        "inherit": "js/lib/inherit",
-        "underscore": "js/lib/underscore",
-        "JSON": "js/lib/json2.js"
-    }, "shim": {
+{"xamlClasses": ["app/Todo", "app/view/TodoView", "js/ui/ButtonGroup", "js/ui/Link", "js/ui/List", "js/ui/MenuButton", "js/ui/Modal", "js/ui/ScrollView", "js/ui/SplitButton", "js/ui/TabView"], "namespaceMap": null, "rewriteMap": null, "paths": {
+    "xaml": "js/plugin/xaml",
+    "json": "js/plugin/json",
+    "raw": "js/plugin/raw",
+    "flow": "js/lib/flow",
+    "inherit": "js/lib/inherit",
+    "underscore": "js/lib/underscore",
+    "JSON": "js/lib/json2",
+    "moment": "js/lib/moment"
+}, "shim": {
     "inherit": {
         "exports": "inherit"
     },
@@ -25,5 +22,8 @@
     },
     "JSON": {
         "exports": "JSON"
+    },
+    "moment": {
+        "exports": "moment"
     }
 }}

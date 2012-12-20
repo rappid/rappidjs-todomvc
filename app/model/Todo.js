@@ -1,5 +1,9 @@
 define(["js/data/Model"], function (Model) {
     return Model.inherit("app.model.Todo", {
+        schema: {
+            title: String,
+            completed: Boolean
+        },
         defaults: {
             title: "",
             completed: false

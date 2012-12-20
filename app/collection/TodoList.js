@@ -2,12 +2,6 @@ define(["js/data/Collection", "app/model/Todo", "flow"], function (Collection, T
     return Collection.inherit("app.collection.TodoList", {
         $modelFactory: Todo,
 
-        markAll: function (done) {
-            this.each(function (todo) {
-                todo.setCompleted(done);
-                todo.save();
-            });
-        },
         areAllComplete: function () {
             if (this.$items.length === 0) {
                 return false;

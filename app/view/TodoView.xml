@@ -11,7 +11,7 @@
                     editing: false
                 },
                 $classAttributes: ['todo', 'inputElement'],
-                events: ["remove"],
+                events: ["on:remove"],
                 editTodo: function (e) {
                     this.set("editing", true);
                     e.preventDefault();
@@ -32,7 +32,7 @@
                     if (e.domEvent.keyCode === ENTER_KEY || e.domEvent.type === INPUT_BLUR) {
                         todo = this.get("todo");
                         if (!todo.hasTitle()) {
-                            this.trigger("remove", todo);
+                            this.trigger("on:remove", todo);
                         } else {
                             this.set("editing", false);
                             todo.save();
@@ -40,7 +40,7 @@
                     }
                 },
                 triggerOnRemove: function () {
-                    this.trigger("remove", this.get("todo"));
+                    this.trigger("on:remove", this.get("todo"));
                 },
                 _renderEditing: function (editing) {
                     if (editing) {

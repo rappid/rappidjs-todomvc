@@ -10,19 +10,14 @@
     <!--[if IE]>
     <script src="../../../assets/ie.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="package/rappidjs.min.js"></script>
-    <script type="text/javascript">
-        rAppid.bootStrap("app/Todo.xml", "config.json",
-                function (err, systemManager, application) {
-                    if (!err) {
-                        application.start(null, function () {
-                            application.render(document.body);
-                        });
-                    } else {
-                        console.warn(err);
-                    }
-                });
-    </script>
+
+    <script type="text/javascript" src="js/lib/require.js"></script>
+    <script type="text/javascript" src="js/lib/rAppid.js"></script>
+
 </head>
-<body></body>
+<body>
+<script type="text/javascript">
+    rAppid.bootStrap("app/Todo.xml");
+</script>
+</body>
 </html>
