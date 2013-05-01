@@ -1,0 +1,8 @@
+{
+    "modules" : [
+        "app/Todo"
+    ],
+    "indexFile": "index.html",
+    "targetDir" : "build",
+    "uglify" : true
+}
