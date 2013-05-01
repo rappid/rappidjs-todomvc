@@ -41,10 +41,11 @@ To connect the view with our application model we use bindings. For example the 
 
 ```html
 <header id="header">
-            <h1>{i18n.translate('title')}</h1>
-            <input id="new-todo" placeholder="{i18n.translate('placeholder')}" type="text" onkeyup="addNewTodo"
-                   value="{{newTodo.title}}" autofocus="autofocus"/>
-        </header>
+   <h1>{i18n.translate('title')}</h1>
+   <input id="new-todo" placeholder="{i18n.translate('placeholder')}" 
+          type="text" onkeyup="addNewTodo"
+          value="{{newTodo.title}}" autofocus="autofocus"/>
+</header>
 ```
 The bindings tell the application to hold view and model in sync. If you're interested in more details, checkout the rAppid.js wiki.
 
