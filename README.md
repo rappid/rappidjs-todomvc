@@ -10,8 +10,6 @@ This example app demonstrates the features and abilities of rAppid.js
 In the index.html the application is bootStrapped by defining our main application file 
 (in this case Todo.xml). Because rAppid.js is a RIA framework, the whole rendering is done by javascript.
 
-If you are now thinking 'yeah fine, but what about SEO ', don't worry, rAppid.js also support Node-Rendering, which can be used for things like SEO.
-
 ### The application file Todo.xml
 
 The main view of the application is declarated in Todo.xml. The first tag of the Todo.xml defines the super class of our application and the namespaces used inside the application description. 
@@ -80,8 +78,9 @@ The Todo List is a bindable List which encapsulates some application logic for m
 It also declares bindable functions, which are used inside the view ...
 
 ### The Todo View (app/view/TodoView.xml)
- The Todo view is a custom view for displaying and editing Todo instances.
- Here we define view logic and view declaration in one file.
+
+The Todo view is a custom view for displaying and editing Todo instances.
+Here we define view logic and view declaration in one file.
  
  
  
