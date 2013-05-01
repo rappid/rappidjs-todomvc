@@ -2,6 +2,14 @@
 
 This example app demonstrates the features and abilities of rAppid.js
 
+## Running the example
+
+1. Install rappidjs command via npm ``npm install rAppid.js``
+2. Checkout this repository
+3. Run ``rappidjs init`` inside the project folder
+4. Setup a local vhost which points to the public folder 
+5. Open your browser :)
+
 ## Documentation
 
 
