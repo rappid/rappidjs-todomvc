@@ -93,7 +93,7 @@ Here we define view logic and view declaration in one file.
  
 ## How to build the application
 
-To build the application, just go to the project directory and run ``rappidjs build``.
+To build the application just go to the project directory and run ``rappidjs build``.
 It will create a runnable, packaged and minified version inside the build directory.
 
  
