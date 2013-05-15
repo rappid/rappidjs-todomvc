@@ -1,0 +1,33 @@
+{
+    "name": "rappidjs-todomvc",
+    "version": "0.1.0",
+    "description": "TodoMVC built with rAppid.js",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/rappid/rappidjs-todomvc.git"
+    },
+    "keywords": [
+        "todomvc",
+        "rappidjs",
+        "rAppid.js",
+        "MVC",
+        "framework",
+        "example",
+        "js",
+        "html"
+    ],
+    "author": "Marcus Krejpowicz",
+    "license": "BSD",
+    "readmeFilename": "README.md",
+    "gitHead": "c8ee845a3840e6415f1bc8ac570f199976a9054b",
+    "rAppid": {
+        "type": "app",
+        "dependencies": {
+            "rAppid.js": "latest"
+        }
+    }
+}
