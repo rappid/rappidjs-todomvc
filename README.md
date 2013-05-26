@@ -1,3 +1,5 @@
+[![Dependency Status](https://david-dm.org/rappid/rappidjs-todomvc.png)](https://david-dm.org/rappid/rappidjs-todomvc)
+
 # Simple Todo App build with rAppid.js
 
 This example app demonstrates the features and abilities of rAppid.js
