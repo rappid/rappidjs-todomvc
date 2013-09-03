@@ -52,8 +52,8 @@ define(["js/core/Application", "js/core/I18n", "app/model/Todo", "app/collection
             clearCompleted: function () {
                 this.$.todoList.clearCompleted();
             },
-            removeTodo: function (e) {
-                var todo = e.$, self = this;
+            removeTodo: function (todo) {
+                var self = this;
                 todo.remove(null, function(err){
                     if(!err){
                         self.get("todoList").remove(todo);

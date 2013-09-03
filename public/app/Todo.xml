@@ -28,9 +28,11 @@
                    checked="{todoList.areAllComplete()}"/>
             <label for="toggle-all">Mark all as complete</label>
             <!-- CUSTOM UI COMPONENT FOR RENDERING A LIST OF ITEMS -> TODOs -->
-            <ui:ItemsView items="{filterList.list}" tagName="ul" id="todo-list" itemKey="todo">
-                <view:TodoView todo="{todo}" tagName="li" onremove="removeTodo"/>
-            </ui:ItemsView>
+            <ul id="todo-list">
+                <js:Repeat items="{filterList.list}" itemKey="todo">
+                    <view:TodoView animationClass="fly" todo="{todo}" tagName="li" onremove="removeTodo(todo)"/>
+                </js:Repeat>
+            </ul>
         </section>
         <footer id="footer" data-num="{todoList.numOpenTodos()}" visible="{not(todoList.isEmpty())}">
             <span id="todo-count">
