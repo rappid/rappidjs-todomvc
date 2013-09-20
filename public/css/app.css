@@ -1,3 +1,7 @@
+body {
+    -webkit-backface-visibility: hidden;
+}
+
 .hide {
     display: none;
 }
