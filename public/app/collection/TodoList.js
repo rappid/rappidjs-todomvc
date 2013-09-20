@@ -30,6 +30,11 @@ define(["js/data/Collection", "app/model/Todo", "flow"], function (Collection, T
                 }
             }).exec();
         },
+
+        size: function(){
+            return this.$items.length;
+        }.on('change', 'add', 'remove'),
+
         numOpenTodos: function () {
             var num = 0;
             for (var i = 0; i < this.$items.length; i++) {
