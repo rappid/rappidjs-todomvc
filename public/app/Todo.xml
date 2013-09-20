@@ -23,7 +23,7 @@
             <h1>Todos</h1>
             <input id="new-todo" placeholder="What needs to be done?" type="text" onkeyup="addNewTodo" autofocus="autofocus"/>
         </header>
-        <section id="main" visible="{not(todoList.isEmpty())}">
+        <section id="main" visible="{todoList.size()}">
             <input id="toggle-all" type="checkbox" onclick="markAllComplete"
                    checked="{todoList.areAllComplete()}"/>
             <label for="toggle-all">Mark all as complete</label>
@@ -34,7 +34,7 @@
                 </js:Repeat>
             </ul>
         </section>
-        <footer id="footer" data-num="{todoList.numOpenTodos()}" visible="{not(todoList.isEmpty())}">
+        <footer id="footer" data-num="{todoList.numOpenTodos()}" visible="{todoList.size()}">
             <span id="todo-count">
                 <strong>{data-num}</strong> {translateItems(data-num)} left
             </span>
