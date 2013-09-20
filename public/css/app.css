@@ -1,4 +1,56 @@
-
 .hide {
     display: none;
+}
+
+#todo-list li {
+    max-height: 50px;
+}
+
+.fly-remove {
+    -webkit-transition: all 2s;
+    -moz-transition: all 2s;
+    max-height: 0 !important;
+    opacity: 0;
+    -webkit-transform: translate(1000px, 0);
+    -moz-transform: translate(1000px, 0);
+    /*-moz-animation-duration: 1s;*/
+    /*-webkit-animation-duration: 1s;*/
+    /*-moz-animation-name: fly-remove;*/
+    /*-webkit-animation-name: fly-remove;*/
+}
+
+@-webkit-keyframes fly-remove {
+    from {
+        -webkit-transform: none;
+        max-height: 50px;
+    }
+
+    to {
+        opacity: 0;
+        overflow: hidden;
+        max-height: 0;
+        -webkit-transform: translate(0, 1000px);
+    }
+}
+
+.fly-add {
+    -moz-animation-duration: 0.5s;
+    -webkit-animation-duration: 1s;
+    -moz-animation-name: fly-add;
+    -webkit-animation-name: fly-add;
+}
+
+@-webkit-keyframes fly-add {
+    from {
+        opacity: 0;
+        overflow: hidden;
+        max-height: 0;
+        -webkit-transform: translate(-500px, 0);
+
+    }
+
+    to {
+        -webkit-transform: none;
+        max-height: 50px;
+    }
 }
