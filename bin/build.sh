@@ -15,7 +15,7 @@ fi
 
 rm -rf public public-build server
 git reset --hard HEAD
-git pull origin dev;
+git pull origin master;
 
 npm install
 
