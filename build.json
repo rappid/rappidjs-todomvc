@@ -3,7 +3,7 @@
         "app/Todo"
     ],
     "indexFile": "index.html",
-    "targetDir" : "build",
+    "targetDir" : "public-build",
     "uglify" : true,
     "usePackageVersion": true
 }
